@@ -1,0 +1,13 @@
+[build]
+  command = "echo 'No build needed - serverless functions only'"
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = false
