@@ -143,11 +143,14 @@ export const handler = async (event, context) => {
     console.log(`Cookie expires at: ${cookieExpiryString}`);
 
     // Return HTML success page with cookies set
+    // Note: multiValueHeaders is required for setting multiple cookies in Netlify Functions
     return {
       statusCode: 200,
       headers: { 
         'Content-Type': 'text/html',
-        'Cache-Control': 'no-cache',
+        'Cache-Control': 'no-cache'
+      },
+      multiValueHeaders: {
         'Set-Cookie': cookies
       },
       body: `
